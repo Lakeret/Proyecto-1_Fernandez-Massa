@@ -1,0 +1,121 @@
+#define LED1_R 6
+#define LED2_R 9
+#define LED2_B 11
+#define LED2_G 5 
+#define LED3_B 2
+#define LED3_G 3
+#define BUZZ   8
+#define POT_TIEMPO A0
+#define POT_R A1
+#define POT_G A2
+#define POT_B A3
+#define BOTON A4
+
+bool secuenciaActiva = true;
+bool estadoBotonAnterior = false;
+
+unsigned long ultimoCambio = 0;
+
+void setup()
+{
+  pinMode( LED1_R  , OUTPUT );
+  pinMode( LED2_R  , OUTPUT );
+  pinMode( LED2_B  , OUTPUT );
+  pinMode( LED2_G  , OUTPUT );
+  pinMode( LED3_B  , OUTPUT );
+  pinMode( LED3_G  , OUTPUT );
+  pinMode( BUZZ    , OUTPUT );
+  pinMode( BOTON   , INPUT_PULLUP );   
+
+  Serial.begin(9600);
+}
+
+int leerColor(int pin)
+{
+  int valor = analogRead(pin);
+  int salida = (valor * 255) / 1023;
+  return salida;
+}
+
+void imprimirDatos(float tiempo, int r, int g, int b)
+{
+  Serial.print("Tiempo: ");
+  Serial.println(tiempo);
+
+  Serial.print("R: ");
+  Serial.println(r);
+  Serial.print("G: ");
+  Serial.println(g);
+  Serial.print("B: ");
+  Serial.println(b);
+
+  Serial.println("------------------");
+}
+
+void parpadeoLED()
+{
+  for(int i=0; i<3; i++)
+  {
+    analogWrite(LED1_R, 0);
+    analogWrite(LED2_R, 0);
+    analogWrite(LED2_B, 0);
+    analogWrite(LED2_G, 0);
+    analogWrite(LED3_B, 0);
+    analogWrite(LED3_G, 0);
+    delay(100);
+
+    tone(BUZZ, 500, 80);  
+    delay(100);
+  }
+}
+
+void leerBoton()
+{
+  bool estadoBoton = !digitalRead(BOTON);  
+
+  if(estadoBoton && !estadoBotonAnterior)
+  {
+    secuenciaActiva = !secuenciaActiva;
+    delay(200);
+  }
+
+  estadoBotonAnterior = estadoBoton;
+}
+
+void loop()
+{
+  leerBoton();
+  if(!secuenciaActiva) return;
+  
+  int tiempoRaw = analogRead(POT_TIEMPO);
+  float tiempo = (tiempoRaw * 3.0) / 1023.0;   
+
+  int R = leerColor(POT_R);
+  int G = leerColor(POT_G);
+  int B = leerColor(POT_B);
+
+  imprimirDatos(tiempo, R, G, B);
+
+  parpadeoLED();
+  analogWrite(LED1_R, R);
+  delay(tiempo * 1000);
+  analogWrite(LED1_R, 0);
+
+  parpadeoLED();
+  digitalWrite(LED2_G, LOW);
+  analogWrite(LED2_R, R);
+  analogWrite(LED2_B, B);
+  delay(tiempo * 1000);
+
+  analogWrite(LED2_R, 0);
+  analogWrite(LED2_B, 0);
+
+
+  parpadeoLED();
+  analogWrite(LED3_B, B / 2);
+  analogWrite(LED3_G, G / 2);
+  delay(tiempo * 1000);
+
+  analogWrite(LED3_B, 0);
+  analogWrite(LED3_G, 0);
+}
