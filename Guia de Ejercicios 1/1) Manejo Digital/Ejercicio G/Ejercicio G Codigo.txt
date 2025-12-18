@@ -11,10 +11,10 @@ int botonAnterior = 0;
 
 void setup() {
 
-  // Configuración del botón con pull-up interno
+  // Configuracion del boton
   pinMode(BOTON, INPUT_PULLUP);
 
-  // Configuración de todos los pines RGB como salida
+  // Configuracion de todos los pines RGB como salida
   pinMode(R1, OUTPUT);
   
   pinMode(G2, OUTPUT);
@@ -27,10 +27,10 @@ void loop() {
   // Lectura del boton (invertida por INPUT_PULLUP)
   int botonActual = !digitalRead(BOTON);
 
-  // Detecta el toque del botón (flanco)
+  // Detecta el toque del boton
   if (botonActual && !botonAnterior) {
 
-    // Apaga TODOS los LEDs RGB
+    // Apaga todos los leds rgb
     digitalWrite(R1, LOW);
 
     digitalWrite(G2, LOW);
@@ -48,7 +48,7 @@ void loop() {
       digitalWrite(B3, HIGH);   
     }
 
-    // Avanza al siguiente LED
+    // Avanza al siguiente led
     paso = paso + 1;
 
     // Si llega a 3, vuelve a empezar
@@ -60,6 +60,7 @@ void loop() {
     delay(200);
   }
 
-  // Guarda el estado del boton para la próxima vuelta
+  // Guarda el estado del boton para la proxima vuelta
   botonAnterior = botonActual;
+
 }
