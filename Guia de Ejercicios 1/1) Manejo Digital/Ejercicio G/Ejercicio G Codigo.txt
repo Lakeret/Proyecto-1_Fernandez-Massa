@@ -14,7 +14,7 @@ void setup() {
   // Configuracion del boton
   pinMode(BOTON, INPUT_PULLUP);
 
-  // Configuracion de todos los pines RGB como salida
+  // Configuracion de todos los pines rgb como salida
   pinMode(R1, OUTPUT);
   
   pinMode(G2, OUTPUT);
@@ -37,7 +37,7 @@ void loop() {
 
     digitalWrite(B3, LOW);
 
-    // Segun el valor de paso, prende solo un RGB
+    // Segun el valor de paso, prende solo un rgb
     if (paso == 0) {
       digitalWrite(R1, HIGH);   
     }
@@ -64,3 +64,4 @@ void loop() {
   botonAnterior = botonActual;
 
 }
+
