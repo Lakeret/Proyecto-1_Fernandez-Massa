@@ -1,7 +1,7 @@
 #define PIN_LED 3
 #define PIN_POT A0
 
-int valorPot = 0;   // lectura del potenciómetro
+int valorPot = 0;   // lectura del potenciometro
 int estadoLED = 0;  // 0 = apagado, 1 = encendido
 int tardanza = 0;    // tiempo de parpadeo map
 
@@ -11,7 +11,7 @@ void setup() {
 }
 
 void loop() {
-  // Leer potenciómetro
+  // Leer potenciometro
   valorPot = analogRead(PIN_POT);
 
   // Map que da valor de respuesta 200ms - 10000ms
@@ -30,6 +30,7 @@ void loop() {
     estadoLED = 0;
     Serial.print("LED APAGADO, Tiempo de respuesta: ");
     Serial.println(tardanza);
-    delay(tardanza);   // espera antes de cambiar
+    delay(tardanza);   
   }
+
 }
