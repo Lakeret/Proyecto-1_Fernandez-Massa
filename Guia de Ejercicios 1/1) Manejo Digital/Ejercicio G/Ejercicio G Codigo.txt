@@ -11,10 +11,10 @@ int botonAnterior = 0;
 
 void setup() {
 
-  // Configuración del botón con pull-up interno
+  // Configuración del boton
   pinMode(BOTON, INPUT_PULLUP);
 
-  // Configuración de todos los pines RGB como salida
+  // Configuracion de todos los pines RGB como salida
   pinMode(R1, OUTPUT);
   
   pinMode(G2, OUTPUT);
@@ -60,6 +60,7 @@ void loop() {
     delay(200);
   }
 
-  // Guarda el estado del boton para la próxima vuelta
+  // Guarda el estado del boton para la proxima vuelta
   botonAnterior = botonActual;
+
 }
