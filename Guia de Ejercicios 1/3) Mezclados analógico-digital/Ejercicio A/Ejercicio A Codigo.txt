@@ -15,7 +15,7 @@ void setup() {
 }
 
 void loop() {
-  //Simulación luces
+  //Simulacion luces
   if (estadoLED == 0) {
     digitalWrite(PIN_LED_ROJO, HIGH);
     digitalWrite(PIN_LED_AZUL, LOW);
@@ -29,7 +29,7 @@ void loop() {
     delay(200); 
   }
 
-  //Simulación de sirena 
+  //Simulacion de sirena 
   if (subir == 1) {
     valorBuzzer = valorBuzzer + paso;
     if (valorBuzzer >= 250) { // máximo PWM
@@ -38,7 +38,7 @@ void loop() {
   } 
   else if (subir == 0) {
     valorBuzzer = valorBuzzer - paso;
-    if (valorBuzzer <= 50) {  // mínimo PWM, nunca se apagada
+    if (valorBuzzer <= 50) {  // minimo PWM, nunca se apagara
       subir = 1;
     }
   }
@@ -47,3 +47,4 @@ void loop() {
   Serial.print("PWM Buzzer: ");
   Serial.println(valorBuzzer);
 }
+
