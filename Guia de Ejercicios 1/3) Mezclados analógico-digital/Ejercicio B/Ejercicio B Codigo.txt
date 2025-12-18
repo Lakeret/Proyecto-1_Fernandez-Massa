@@ -18,7 +18,7 @@ void setup() {
 
 void loop() {
   //Control del led con boton
-  if (digitalRead(PIN_BOTON) == LOW) { // botón presionado
+  if (digitalRead(PIN_BOTON) == LOW) { // boton presionado
     estadoLED = 1;
   }
 
@@ -53,4 +53,5 @@ void loop() {
     Serial.print(" G: "); Serial.print(verde);
     Serial.print(" B: "); Serial.println(azul);
   }
+
 }
