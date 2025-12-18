@@ -11,7 +11,7 @@ int botonAnterior = 0;
 
 void setup() {
 
-  // Configuración del boton
+  // Configuracion del boton
   pinMode(BOTON, INPUT_PULLUP);
 
   // Configuracion de todos los pines RGB como salida
@@ -27,7 +27,7 @@ void loop() {
   // Lectura del boton (invertida por INPUT_PULLUP)
   int botonActual = !digitalRead(BOTON);
 
-  // Detecta el toque del botón (flanco)
+  // Detecta el toque del boton 
   if (botonActual && !botonAnterior) {
 
     // Apaga TODOS los LEDs RGB
@@ -64,3 +64,4 @@ void loop() {
   botonAnterior = botonActual;
 
 }
+
