@@ -2,7 +2,7 @@
 #define MSG_TEMP  " y la temperatura actual: "
 #define GRADOS    " °C"
 
-const int PIN_TMP35 = A0;
+const int PIN_TMP36 = A0;
 const int PIN_LDR   = A1;
 
 const int PIN_LED_R = 9;
@@ -20,7 +20,7 @@ void setup() {
 void loop() {
 
   // TEMPERATURA TMP36
-  int lecturaTemp = analogRead(PIN_TMP35);
+  int lecturaTemp = analogRead(PIN_TMP36);
   int temperatura = (lecturaTemp * 5.0 / 1024) * 100 -50;
   temperatura = constrain(temperatura, -10, 150);
 
