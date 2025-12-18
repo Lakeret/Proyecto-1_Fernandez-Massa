@@ -29,7 +29,7 @@ void loop() {
     delay(200); 
   }
 
-  //Simulación de sirena 
+  //Simulacion de sirena 
   if (subir == 1) {
     valorBuzzer = valorBuzzer + paso;
     if (valorBuzzer >= 250) { // máximo PWM
@@ -47,3 +47,4 @@ void loop() {
   Serial.print("PWM Buzzer: ");
   Serial.println(valorBuzzer);
 }
+
