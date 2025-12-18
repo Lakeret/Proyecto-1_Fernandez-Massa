@@ -20,7 +20,7 @@ void setup() {
 
 void loop() {
 
-  // Apagar ambos RGB
+  // Apagar ambos rgb
   digitalWrite(R1, LOW);
   digitalWrite(G1, LOW);
   digitalWrite(B1, LOW);
@@ -32,7 +32,7 @@ void loop() {
   int color = paso / 2;
 
   if (paso % 2 == 0) {
-    // RGB 1 encendido
+    // rgb 1 encendido
 
     if (color == 0) { digitalWrite(R1, HIGH); }                 // Rojo
     else if (color == 1) { digitalWrite(G1, HIGH); digitalWrite(B1, HIGH); } // Cian
@@ -43,7 +43,7 @@ void loop() {
     else if (color == 6) { digitalWrite(R1, HIGH); digitalWrite(G1, HIGH); } // Amarillo
 
   } else {
-    // RGB 2 encendido
+    // rgb 2 encendido
 
     if (color == 0) { digitalWrite(R2, HIGH); }
     else if (color == 1) { digitalWrite(G2, HIGH); digitalWrite(B2, HIGH); }
@@ -60,4 +60,5 @@ void loop() {
   if (paso >= 14) {
     paso = 0;
   }
+
 }
